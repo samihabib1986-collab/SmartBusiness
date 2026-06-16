@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SmartBusiness System | Analytics</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="assets/js/theme.js"></script>
+
+</head>
+<body>
+
+<!-- ========================= SIDEBAR ========================= -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+        <a href="dashboard.html" class="logo-link">
+            <img src="assets/images/logos/logo.png" class="logo-image" alt="Logo">
+            <span class="logo-text">Smart Business</span>
+        </a>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li class="menu-title">Workspace</li>
+        <li class="menu-item">
+            <a href="dashboard.html" class="menu-link">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="employees.html" class="menu-link">
+                <i class="fas fa-users"></i>
+                <span>Employees</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="projects.html" class="menu-link">
+                <i class="fas fa-layer-group"></i>
+                <span>Projects</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="tasks.html" class="menu-link">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="reports.html" class="menu-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Reports</span>
+            </a>
+        </li>
+        <li class="menu-item active">
+            <a href="analytics.html" class="menu-link">
+                <i class="fas fa-chart-pie"></i>
+                <span>Analytics</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="settings.html" class="menu-link">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <div class="user-info">
+            <img src="assets/images/users/user-1.jpg" alt="User">
+            <div class="user-details">
+                <h6>Dalal</h6>
+                <span>Administrator</span>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- ========================= NAVBAR ========================= -->
+<nav class="topbar">
+    <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebarToggleBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h4 class="page-title">Analytics</h4>
+    </div>
+
+    <div class="topbar-right">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search analytics...">
+        </div>
+        <div class="icon-btn" id="notificationBtn">
+            <i class="fas fa-bell"></i>
+            <span class="badge" id="notificationBadge">3</span>
+        </div>
+        <div class="icon-btn" id="darkModeBtn">
+            <i class="fas fa-moon"></i>
+        </div>
+        <div class="user-dropdown" id="userDropdown">
+            <div class="user-dropdown-trigger">
+                <img src="assets/images/users/user-1.jpg" alt="User">
+                <div class="user-info-small">
+                    <span class="name">Dalal</span>
+                    <small>Admin</small>
+                </div>
+                <i class="fas fa-chevron-down" id="dropdownArrow"></i>
+            </div>
+            <ul class="dropdown-menu" id="dropdownMenu">
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><hr></li>
+                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ========================= MAIN CONTENT ========================= -->
+<main class="main-content">
+    <div class="page-header">
+        <h1>Advanced Analytics</h1>
+        <p>Deep insights and predictive performance metrics</p>
+    </div>
+
+    <!-- Period Selector -->
+    <div class="period-selector">
+        <button class="period-btn active" data-period="week">This Week</button>
+        <button class="period-btn" data-period="month">This Month</button>
+        <button class="period-btn" data-period="quarter">This Quarter</button>
+        <button class="period-btn" data-period="year">This Year</button>
+        <button class="period-btn" data-period="all">All Time</button>
+    </div>
+
+    <!-- Key Metrics Row -->
+    <div class="analytics-metrics">
+        <div class="metric-card">
+            <div class="metric-icon" style="background: #4f46e5;">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="metric-info">
+                <h3 id="avgCompletion">0%</h3>
+                <p>Avg. Completion Rate</p>
+                <span class="trend up"><i class="fas fa-arrow-up"></i> +12%</span>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon" style="background: #22c55e;">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="metric-info">
+                <h3 id="avgTime">0</h3>
+                <p>Avg. Task Completion (days)</p>
+                <span class="trend down"><i class="fas fa-arrow-down"></i> -3 days</span>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon" style="background: #f59e0b;">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="metric-info">
+                <h3 id="productivity">0%</h3>
+                <p>Team Productivity</p>
+                <span class="trend up"><i class="fas fa-arrow-up"></i> +8%</span>
+            </div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-icon" style="background: #ef4444;">
+                <i class="fas fa-flag-checkered"></i>
+            </div>
+            <div class="metric-info">
+                <h3 id="onTimeRate">0%</h3>
+                <p>On-Time Delivery</p>
+                <span class="trend up"><i class="fas fa-arrow-up"></i> +5%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Charts Row -->
+    <div class="analytics-charts">
+        <div class="chart-card large">
+            <div class="chart-header">
+                <h3><i class="fas fa-chart-line"></i> Performance Trend</h3>
+                <select id="trendMetric" class="chart-select">
+                    <option value="tasks">Tasks Completed</option>
+                    <option value="projects">Projects Started</option>
+                    <option value="hours">Hours Logged</option>
+                </select>
+            </div>
+            <canvas id="trendChart" height="300"></canvas>
+        </div>
+        <div class="chart-card">
+            <div class="chart-header">
+                <h3><i class="fas fa-chart-pie"></i> Department Distribution</h3>
+            </div>
+            <canvas id="departmentChart" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="analytics-charts">
+        <div class="chart-card">
+            <div class="chart-header">
+                <h3><i class="fas fa-chart-bar"></i> Weekly Performance</h3>
+            </div>
+            <canvas id="weeklyChart" height="200"></canvas>
+        </div>
+        <div class="chart-card">
+            <div class="chart-header">
+                <h3><i class="fas fa-chart-line"></i> Monthly Progress</h3>
+            </div>
+            <canvas id="monthlyChart" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Top Performers Section -->
+    <div class="performers-section">
+        <div class="section-header">
+            <h3><i class="fas fa-trophy"></i> Top Performers</h3>
+            <select id="performerType" class="chart-select">
+                <option value="tasks">Most Tasks Completed</option>
+                <option value="projects">Most Projects</option>
+                <option value="efficiency">Highest Efficiency</option>
+            </select>
+        </div>
+        <div class="performers-grid" id="performersGrid">
+            <!-- Top performers will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Insights Section -->
+    <div class="insights-section">
+        <div class="section-header">
+            <h3><i class="fas fa-lightbulb"></i> AI Insights & Recommendations</h3>
+        </div>
+        <div class="insights-grid" id="insightsGrid">
+            <div class="insight-card">
+                <i class="fas fa-chart-line"></i>
+                <h4>Productivity Trend</h4>
+                <p>Team productivity increased by 15% this month</p>
+            </div>
+            <div class="insight-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h4>Bottleneck Alert</h4>
+                <p>Engineering department has 5 overdue tasks</p>
+            </div>
+            <div class="insight-card">
+                <i class="fas fa-calendar-check"></i>
+                <h4>Deadline Forecast</h4>
+                <p>3 projects at risk of missing deadline</p>
+            </div>
+            <div class="insight-card">
+                <i class="fas fa-user-plus"></i>
+                <h4>Resource Planning</h4>
+                <p>Consider hiring 2 more developers</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="assets/js/analytics.js"></script>
+
+</body>
+</html>
