@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SmartBusiness System | Project Details</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="assets/js/theme.js"></script>
+
+</head>
+<body>
+
+<!-- ========================= SIDEBAR ========================= -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+        <a href="dashboard.html" class="logo-link">
+            <img src="assets/images/logos/logo.png" class="logo-image" alt="Logo">
+            <span class="logo-text">Smart Business</span>
+        </a>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li class="menu-title">Workspace</li>
+        <li class="menu-item">
+            <a href="dashboard.html" class="menu-link">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="employees.html" class="menu-link">
+                <i class="fas fa-users"></i>
+                <span>Employees</span>
+            </a>
+        </li>
+        <li class="menu-item active">
+            <a href="projects.html" class="menu-link">
+                <i class="fas fa-layer-group"></i>
+                <span>Projects</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="tasks.html" class="menu-link">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="reports.html" class="menu-link">
+                <i class="fas fa-chart-line"></i>
+                <span>Reports</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="analytics.html" class="menu-link">
+                <i class="fas fa-chart-pie"></i>
+                <span>Analytics</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="settings.html" class="menu-link">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <div class="user-info">
+            <img src="assets/images/users/user-1.jpg" alt="User">
+            <div class="user-details">
+                <h6>Dalal</h6>
+                <span>Administrator</span>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!-- ========================= NAVBAR ========================= -->
+<nav class="topbar">
+    <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebarToggleBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h4 class="page-title">Project Details</h4>
+    </div>
+
+    <div class="topbar-right">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search...">
+        </div>
+        <div class="icon-btn" id="notificationBtn">
+            <i class="fas fa-bell"></i>
+            <span class="badge" id="notificationBadge">3</span>
+        </div>
+        <div class="icon-btn" id="darkModeBtn">
+            <i class="fas fa-moon"></i>
+        </div>
+        <div class="user-dropdown" id="userDropdown">
+            <div class="user-dropdown-trigger">
+                <img src="assets/images/users/user-1.jpg" alt="User">
+                <div class="user-info-small">
+                    <span class="name">Dalal</span>
+                    <small>Admin</small>
+                </div>
+                <i class="fas fa-chevron-down" id="dropdownArrow"></i>
+            </div>
+            <ul class="dropdown-menu" id="dropdownMenu">
+                <li><a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><hr></li>
+                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ========================= MAIN CONTENT ========================= -->
+<main class="main-content">
+    <div class="page-header">
+        <div class="header-left">
+            <a href="projects.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Projects</a>
+            <h1>Project Overview</h1>
+            <p>Complete project information and progress tracking</p>
+        </div>
+        <div class="header-right">
+            <button class="btn-edit" id="editProjectBtn"><i class="fas fa-edit"></i> Edit</button>
+            <button class="btn-delete" id="deleteProjectBtn"><i class="fas fa-trash"></i> Delete</button>
+        </div>
+    </div>
+
+    <!-- Project Details Grid -->
+    <div class="project-details-grid">
+        <!-- Left Column - Project Info Card -->
+        <div class="project-info-card">
+            <div class="project-icon-section">
+                <i class="fas fa-layer-group" id="projectIcon"></i>
+                <div class="project-status" id="projectStatusBadge">In Progress</div>
+            </div>
+            <h2 id="projectName">E-Commerce Platform</h2>
+            <p class="project-client" id="projectClient"><i class="fas fa-building"></i> TechStore</p>
+            
+            <div class="project-stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="progressValue">65</span>
+                    <span class="stat-label">Progress<br>%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="tasksCount">24</span>
+                    <span class="stat-label">Total<br>Tasks</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="teamCount">6</span>
+                    <span class="stat-label">Team<br>Members</span>
+                </div>
+            </div>
+
+            <div class="project-progress-bar">
+                <div class="progress-header">
+                    <span>Project Progress</span>
+                    <span id="progressPercent">65%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-fill" id="progressFill" style="width: 65%;"></div>
+                </div>
+            </div>
+
+            <div class="project-dates">
+                <div class="date-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <span>Start Date</span>
+                        <p id="startDate">2024-09-01</p>
+                    </div>
+                </div>
+                <div class="date-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <div>
+                        <span>Deadline</span>
+                        <p id="deadline">2024-12-15</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-priority">
+                <span>Priority</span>
+                <span class="priority-badge" id="projectPriority">High</span>
+            </div>
+        </div>
+
+        <!-- Right Column - Details -->
+        <div class="project-details">
+            <!-- Description Section -->
+            <div class="info-card">
+                <h3><i class="fas fa-align-left"></i> Description</h3>
+                <p id="projectDesc">Full-featured online store with payment integration, user authentication, and admin dashboard. Includes product management, order tracking, and customer support features.</p>
+            </div>
+
+            <!-- Team Members Section -->
+            <div class="info-card">
+                <h3><i class="fas fa-users"></i> Team Members</h3>
+                <div class="team-members" id="teamMembers">
+                    <div class="team-member">
+                        <img src="assets/images/users/user-1.jpg" alt="Ahmed">
+                        <div>
+                            <h4>Ahmed Mansour</h4>
+                            <p>Frontend Lead</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="assets/images/users/user-3.jpg" alt="Sara">
+                        <div>
+                            <h4>Sara Khalil</h4>
+                            <p>UI/UX Designer</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="assets/images/users/user-2.jpg" alt="Omar">
+                        <div>
+                            <h4>Omar Haddad</h4>
+                            <p>Backend Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-add-member" id="addMemberBtn"><i class="fas fa-plus"></i> Add Team Member</button>
+            </div>
+
+            <!-- Tasks Section -->
+            <div class="info-card">
+                <h3><i class="fas fa-tasks"></i> Project Tasks</h3>
+                <div class="tasks-list" id="projectTasks">
+                    <div class="task-item">
+                        <div class="task-checkbox">
+                            <input type="checkbox" id="task1" checked>
+                            <label for="task1">Design database schema</label>
+                        </div>
+                        <span class="task-status completed">Completed</span>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-checkbox">
+                            <input type="checkbox" id="task2">
+                            <label for="task2">Create wireframes</label>
+                        </div>
+                        <span class="task-status in-progress">In Progress</span>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-checkbox">
+                            <input type="checkbox" id="task3">
+                            <label for="task3">Implement authentication API</label>
+                        </div>
+                        <span class="task-status pending">Pending</span>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-checkbox">
+                            <input type="checkbox" id="task4">
+                            <label for="task4">Frontend development</label>
+                        </div>
+                        <span class="task-status pending">Pending</span>
+                    </div>
+                </div>
+                <button class="btn-add-task" id="addTaskBtn"><i class="fas fa-plus"></i> Add Task</button>
+            </div>
+
+            <!-- Milestones Section -->
+            <div class="info-card">
+                <h3><i class="fas fa-flag-checkered"></i> Milestones</h3>
+                <div class="milestones-list" id="milestonesList">
+                    <div class="milestone-item">
+                        <div class="milestone-dot completed"></div>
+                        <div class="milestone-content">
+                            <h4>Project Kickoff</h4>
+                            <p>September 1, 2024</p>
+                        </div>
+                    </div>
+                    <div class="milestone-item">
+                        <div class="milestone-dot in-progress"></div>
+                        <div class="milestone-content">
+                            <h4>MVP Launch</h4>
+                            <p>November 15, 2024</p>
+                        </div>
+                    </div>
+                    <div class="milestone-item">
+                        <div class="milestone-dot pending"></div>
+                        <div class="milestone-content">
+                            <h4>Final Delivery</h4>
+                            <p>December 15, 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Edit Project Modal -->
+<div class="modal" id="editProjectModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Edit Project</h3>
+            <span class="modal-close" id="closeEditModal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="editProjectForm">
+                <div class="form-group">
+                    <label>Project Name</label>
+                    <input type="text" id="editName" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Client</label>
+                    <input type="text" id="editClient" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="editDesc" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>Priority</label>
+                        <select id="editPriority" class="form-control">
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group half">
+                        <label>Status</label>
+                        <select id="editStatus" class="form-control">
+                            <option value="Planning">Planning</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="On Hold">On Hold</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>Progress (%)</label>
+                        <input type="number" id="editProgress" class="form-control" min="0" max="100">
+                    </div>
+                    <div class="form-group half">
+                        <label>Deadline</label>
+                        <input type="date" id="editDeadline" class="form-control">
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn-cancel" id="cancelEditBtn">Cancel</button>
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/project-details.js"></script>
+
+</body>
+</html>

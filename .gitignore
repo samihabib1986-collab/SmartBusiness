@@ -1,0 +1,28 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules
+node_modules/
+
+# VS Code settings
+.vscode/
+
+# PHPStorm, IntelliJ
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+
+# Composer
+vendor/
+
+# Build output
+dist/
+
+# Environment files
+.env
